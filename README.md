@@ -5,12 +5,17 @@
 Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z systemem autentykacji, ulubionymi, biletami i profilem użytkownika.
 
 ## Screenshots
-
+-Home Page
 ![Homepage](./screenshots/Homepage.png)
+-Register/Login
 ![Register/Login](./screenshots/Register_Login.png)
+-Form Add Events
 ![Add Events](./screenshots/AddEventsForm.png)
+-Favorites Page
 ![Favorites](./screenshots/Favorites.png)
+-Tickets Page
 ![Tickets](./screenshots/Tickets.png)
+-User Profile Page
 ![User Profile](./screenshots/UserProfile.png)
 
 ---
@@ -244,7 +249,6 @@ backend/
 - Kliknij **"Register"** na pasku nawigacji
 - Wypełnij formularz (email, hasło, itp.)
 - Kliknij "Sign Up"
-- Jesteś zalogowany! ✅
 
 ### 2. Przeglądanie Eventów
 
