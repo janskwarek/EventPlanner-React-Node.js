@@ -1,0 +1,85 @@
+.favorites {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+/* Nagłówek w stylu iOS - duży, pogrubiony, dosunięty do lewej (lub środka) */
+.favorites h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: left;
+  padding: 0 1rem;
+  letter-spacing: -0.5px;
+}
+
+/* Kontener siatki - taki sam jak w Home.css dla spójności */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Stylizacja pustego stanu (gdy nie ma ulubionych) */
+.favorites-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-card); /* Biała karta */
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  margin: 2rem auto;
+  max-width: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Resetujemy styl h2 wewnątrz pustego stanu, żeby nie był tak wielki jak nagłówek strony */
+.favorites-empty h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: var(--text-primary);
+  padding: 0;
+}
+
+.favorites-empty p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Subtelna animacja pojawiania się elementów */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.events-grid > * {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@media (max-width: 600px) {
+  .favorites h2 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .favorites-empty {
+    margin: 1rem;
+    padding: 3rem 1.5rem;
+  }
+}

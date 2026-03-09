@@ -1,0 +1,113 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.login-container {
+  background: var(--bg-card);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+}
+
+.login-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  margin-left: 4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--bg-input);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+.login-btn {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+  border: none;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+.register-btn {
+  background-color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.register-btn:hover {
+  background-color: var(--text-primary);
+}
+
+.response-msg {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.response-msg.error {
+  background-color: rgba(255, 59, 48, 0.1);
+  color: var(--danger-color);
+}
+
+.response-msg.success {
+  background-color: rgba(52, 199, 89, 0.1);
+  color: #34c759;
+}

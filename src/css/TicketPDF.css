@@ -1,0 +1,119 @@
+/* Styl biletu PDF - format poziomy */
+.ticket-pdf-container {
+  width: 480px;
+  height: 260px;
+  padding: 20px 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  color: #333;
+  font-family: "Segoe UI", Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.ticket-pdf-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ticket-pdf-type {
+  display: inline-block;
+  padding: 4px 12px;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.ticket-pdf-type.normal {
+  background: #27ae60;
+}
+
+.ticket-pdf-type.discounted {
+  background: #3498db;
+}
+
+.ticket-pdf-type.vip {
+  background: #9b59b6;
+}
+
+.ticket-pdf-title {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.ticket-pdf-info {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.ticket-pdf-info p {
+  margin: 4px 0;
+}
+
+.ticket-pdf-info strong {
+  color: #333;
+}
+
+.ticket-pdf-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.ticket-pdf-right {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px dashed #ddd;
+  padding-left: 20px;
+}
+
+.ticket-pdf-qr {
+  background: white;
+  padding: 8px;
+  border: 1px solid #eee;
+}
+
+.ticket-pdf-qr-label {
+  margin: 10px 0 0 0;
+  font-size: 10px;
+  color: #888;
+  text-align: center;
+}
+
+.ticket-pdf-footer {
+  position: absolute;
+  bottom: 8px;
+  left: 25px;
+  right: 25px;
+  font-size: 9px;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 6px;
+}
+
+/* Typ kolorów dla cen */
+.ticket-price-normal {
+  color: #27ae60;
+}
+
+.ticket-price-discounted {
+  color: #3498db;
+}
+
+.ticket-price-vip {
+  color: #9b59b6;
+}

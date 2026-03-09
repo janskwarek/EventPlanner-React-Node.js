@@ -1,0 +1,55 @@
+:root {
+  /* Apple iOS Palette */
+  --bg-app: #f5f5f7; /* Jasne tło aplikacji */
+  --bg-card: #ffffff; /* Białe karty */
+  --bg-glass: rgba(255, 255, 255, 0.85); /* Efekt szkła */
+  --bg-input: #e5e5ea; /* Szare inputy */
+
+  /* Kolory tekstu */
+  --text-primary: #1d1d1f; /* Prawie czarny */
+  --text-secondary: #86868b; /* Szary tekst pomocniczy */
+
+  /* Akcenty */
+  --accent-color: #007aff; /* iOS Blue */
+  --accent-hover: #0062cc;
+  --danger-color: #ff3b30; /* iOS Red */
+
+  /* Design System */
+  --radius-xl: 20px;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
