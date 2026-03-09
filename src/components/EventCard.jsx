@@ -2,15 +2,52 @@ import { useState, useEffect } from "react";
 import "../css/EventCard.css";
 import { Link } from "react-router-dom";
 
-function EventCard({ event, isInitiallyFavorite, onToggle }) {
+function EventCard({ event, isInitiallyFavorite, onToggle, onDelete }) {
   const [isFavorite, setIsFavorite] = useState(isInitiallyFavorite);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    setIsFavorite(isInitiallyFavorite);
-  }, [isInitiallyFavorite]);
+  const currentUsername = localStorage.getItem("username");
+  const isOwner = currentUsername === event.created_by;
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
+
+  const handleDeleteEvent = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!window.confirm("Czy na pewno chcesz usunąć ten event?")) {
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Musisz się zalogować!");
+      return;
+    }
+
+    setIsDeleting(true);
+    try {
+      const res = await fetch(`http://localhost:5001/api/events/${event.id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Błąd przy usuwaniu");
+      }
+
+      alert("Event usunięty!");
+      setIsModalOpen(false);
+      if (onDelete) onDelete(event.id);
+    } catch (err) {
+      alert(`Błąd: ${err.message}`);
+      console.error("Delete error:", err);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
 
   const handleFavoriteClick = async (e) => {
     e.preventDefault();
@@ -65,7 +102,17 @@ function EventCard({ event, isInitiallyFavorite, onToggle }) {
           </div>
         </div>
       </div>
-
+  {isOwner && (
+                    <button
+                      className="delete-button"
+                      onClick={handleDeleteEvent}
+                      disabled={isDeleting}
+                      style={{ marginLeft: "10px", backgroundColor: "#dc3545" }}
+                    >
+                      {isDeleting ? "Usuwanie..." : "🗑️ Usuń"}
+                    </button>
+                  )}
+                
       {isModalOpen && (
         <div className="modal-overlay" onClick={toggleModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

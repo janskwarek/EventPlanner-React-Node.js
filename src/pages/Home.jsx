@@ -45,6 +45,10 @@ function Home() {
     }
   };
 
+  const handleDeleteEvent = (eventId) => {
+    setEvents((prevEvents) => prevEvents.filter((e) => e.id !== eventId));
+  };
+
   return (
     <div className="home">
       <header className="home-header">
@@ -111,7 +115,11 @@ function Home() {
             return 0;
           })
           .map((event) => (
-            <EventCard key={event.id} event={event} />
+            <EventCard 
+              key={event.id} 
+              event={event}
+              onDelete={handleDeleteEvent}
+            />
           ))}
       </div>
     </div>

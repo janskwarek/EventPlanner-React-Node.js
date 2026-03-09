@@ -29,6 +29,10 @@ function Favorites() {
     setFavorites((prev) => prev.filter((event) => event.id !== id));
   };
 
+  const handleDeleteEvent = (eventId) => {
+    setFavorites((prev) => prev.filter((e) => e.id !== eventId));
+  };
+
   if (loading)
     return (
       <div className="favorites">
@@ -53,6 +57,7 @@ function Favorites() {
               event={event}
               isInitiallyFavorite={true}
               onToggle={handleRemoveFromList}
+              onDelete={handleDeleteEvent}
             />
           ))}
         </div>
