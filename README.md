@@ -62,6 +62,13 @@ Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z 
 - Historia rezerwacji
 - Ustawienia profilu
 
+### Zarządzanie Plikami
+
+- Upload plików do serwera
+- Zarządzanie folderami
+- Organizacja plików w folderze `uploads/`
+- Pobieranie i usuwanie plików
+
 ---
 
 ## Tech Stack
