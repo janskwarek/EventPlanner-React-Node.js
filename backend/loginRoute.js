@@ -16,7 +16,7 @@ router.post("/login", (req, res) => {
   const sql = "SELECT * FROM accounts WHERE username = ?";
   con.query(sql, [login], async (err, result) => {
     if (err) {
-      console.error("Database error:", err);
+      console.error("Login error:", err.message);
       return res.status(500).json({ error: "Błąd serwera" });
     }
 

@@ -9,16 +9,13 @@ export const con = mysql.createConnection({
 
 con.connect((err) => {
   if (err) throw err;
-  console.log("Połączono z MySQL");
 
   const addColumnSQL = `
     ALTER TABLE events ADD COLUMN IF NOT EXISTS created_by VARCHAR(255) DEFAULT 'Anonymous'
   `;
   con.query(addColumnSQL, (err) => {
     if (err && err.code !== "ER_DUP_FIELDNAME") {
-      console.error("Błąd dodawania kolumny created_by:", err);
-    } else if (!err) {
-      console.log("Kolumna created_by sprawdzana/dodana.");
+      console.error("Database setup error:", err);
     }
   });
 
@@ -27,9 +24,7 @@ con.connect((err) => {
   `;
   con.query(addUsernameSQL, (err) => {
     if (err && err.code !== "ER_DUP_FIELDNAME") {
-      console.error("Błąd dodawania kolumny username:", err);
-    } else if (!err) {
-      console.log("Kolumna username w favorites sprawdzana/dodana.");
+      console.error("Database setup error:", err);
     }
   });
 
@@ -38,9 +33,7 @@ con.connect((err) => {
   `;
   con.query(dropOldUniqueSQL, (err) => {
     if (err && err.code !== "ER_CANT_DROP_FIELD_OR_KEY") {
-      console.error("Nie można usunąć starego INDEX:", err);
-    } else if (!err) {
-      console.log("Stary INDEX usunięty.");
+      console.error("Database setup error:", err);
     }
   });
 
@@ -49,9 +42,7 @@ con.connect((err) => {
   `;
   con.query(addNewUniqueSQL, (err) => {
     if (err && err.code !== "ER_DUP_KEYNAME") {
-      console.error("Błąd dodawania nowego UNIQUE:", err);
-    } else if (!err) {
-      console.log("Nowy UNIQUE (event_id, username) dodany.");
+      console.error("Database setup error:", err);
     }
   });
 
@@ -65,7 +56,6 @@ con.connect((err) => {
     );
   `;
   con.query(sql, (err) => {
-    if (err) console.error("Błąd tabeli favorites:", err);
-    else console.log("Tabela favorites gotowa.");
+    if (err) console.error("Database setup error:", err);
   });
 });

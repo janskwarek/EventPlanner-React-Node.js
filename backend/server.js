@@ -20,4 +20,3 @@ app.use("/api", registerRoute);
 app.use("/api", userEventsRoute);
 
 app.listen(PORT, () => console.log(`Backend: http://localhost:${PORT}`));
-console.log(crypto.randomBytes(64).toString("hex"));

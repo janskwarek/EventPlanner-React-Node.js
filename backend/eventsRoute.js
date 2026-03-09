@@ -33,19 +33,10 @@ router.post("/events", (req, res) => {
     ],
     (err, result) => {
       if (err) {
-        console.error("Błąd SQL:", err.message);
-        console.error("Kod błędu:", err.code);
-        console.error("Dane:", {
-          title,
-          date,
-          url,
-          price,
-          description,
-          created_by,
-        });
+        console.error("Database error adding event:", err.message);
         return res
           .status(500)
-          .json({ error: err.message || "Błąd serwera podczas dodawania" });
+          .json({ error: "Błąd serwera podczas dodawania" });
       }
 
       const newEvent = {
