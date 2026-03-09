@@ -8,8 +8,11 @@ function ProfileDetails() {
   const username = localStorage.getItem("username");
 
   useEffect(() => {
-    if (username) {
-      fetch(`http://localhost:5001/api/user-events?username=${username}`)
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("http://localhost:5001/api/user-events", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
         .then((res) => {
           if (!res.ok) throw new Error("Błąd sieci");
           return res.json();
@@ -25,7 +28,7 @@ function ProfileDetails() {
     } else {
       setIsLoading(false);
     }
-  }, [username]);
+  }, []);
 
   return (
     <div className="profile-details">

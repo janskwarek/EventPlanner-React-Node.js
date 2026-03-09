@@ -8,19 +8,22 @@ function Favorites() {
   const username = localStorage.getItem("username");
 
   useEffect(() => {
-    if (!username) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       setLoading(false);
       return;
     }
 
-    fetch(`http://localhost:5001/api/favorites?username=${username}`)
+    fetch("http://localhost:5001/api/favorites", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((res) => res.json())
       .then((data) => {
         setFavorites(data);
         setLoading(false);
       })
       .catch((err) => console.error(err));
-  }, [username]);
+  }, []);
 
   const handleRemoveFromList = (id) => {
     setFavorites((prev) => prev.filter((event) => event.id !== id));

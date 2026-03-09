@@ -23,11 +23,14 @@ function Home() {
 
   const handleAddEvent = async (eventData) => {
     try {
-      const username = localStorage.getItem("username");
+      const token = localStorage.getItem("token");
       const res = await fetch("http://localhost:5001/api/events", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...eventData, created_by: username }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(eventData),
       });
 
       const data = await res.json();

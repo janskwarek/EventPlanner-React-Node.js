@@ -17,19 +17,23 @@ function EventCard({ event, isInitiallyFavorite, onToggle }) {
     e.stopPropagation();
     const username = localStorage.getItem("username");
 
-    if (!username) {
+    const token = localStorage.getItem("token");
+    if (!token) {
       alert("Musisz się zalogować aby dodać do ulubionych!");
       return;
     }
 
     try {
       const res = await fetch(
-        `http://localhost:5001/api/favorites/${event.id}?username=${username}`,
-        { method: "POST" },
+        `http://localhost:5001/api/favorites/${event.id}`,
+        {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
       const data = await res.json();
-      setIsFavorite(data.isFavorite);
-      if (onToggle && !data.isFavorite) onToggle(event.id);
+      setIsFavorite(!isFavorite);
+      if (onToggle) onToggle(event.id);
     } catch (err) {
       console.error("Błąd ulubionych:", err);
     }

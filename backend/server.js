@@ -1,22 +1,20 @@
 import express from "express";
 import cors from "cors";
-import LoginRoute from "./loginRoute.js";
-import eventsRoute from "./eventsRoute.js";
-import favoritesRoute from "./favoritesRoute.js";
-import registerRoute from "./registerRoute.js";
-import userEventsRoute from "./userEventsRoute.js";
-import crypto from "crypto";
-import "./db.js";
+import authRoutes from "./routes/auth.js";
+import eventsRoutes from "./routes/events.js";
+import favoritesRoutes from "./routes/favorites.js";
+import userEventsRoutes from "./routes/userEvents.js";
+import "./config/database.js";
+
 const app = express();
 const PORT = 5001;
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
-app.use("/api", LoginRoute);
-app.use("/api", eventsRoute);
-app.use("/api", favoritesRoute);
-app.use("/api", registerRoute);
-app.use("/api", userEventsRoute);
+app.use("/api", authRoutes);
+app.use("/api", eventsRoutes);
+app.use("/api", favoritesRoutes);
+app.use("/api", userEventsRoutes);
 
 app.listen(PORT, () => console.log(`Backend: http://localhost:${PORT}`));
