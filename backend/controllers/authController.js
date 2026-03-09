@@ -11,6 +11,10 @@ export const login = (req, res) => {
     return res.status(400).json({ error: "Login i hasło są wymagane" });
   }
 
+  if (password.trim() === "") {
+    return res.status(400).json({ error: "Hasło nie może być puste" });
+  }
+
   const sql = "SELECT * FROM accounts WHERE username = ?";
   con.query(sql, [login], async (err, result) => {
     if (err) {

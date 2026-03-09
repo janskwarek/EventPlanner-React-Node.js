@@ -5,6 +5,7 @@
 Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z systemem autentykacji, ulubionymi, biletami i profilem użytkownika.
 
 ## Screenshots
+
 -Home Page
 ![Homepage](./screenshots/Homepage.png)
 -Register/Login
@@ -61,13 +62,6 @@ Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z 
 - Wyświetlanie danych użytkownika
 - Historia rezerwacji
 - Ustawienia profilu
-
-### Zarządzanie Plikami
-
-- Upload plików do serwera
-- Zarządzanie folderami
-- Organizacja plików w folderze `uploads/`
-- Pobieranie i usuwanie plików
 
 ---
 
