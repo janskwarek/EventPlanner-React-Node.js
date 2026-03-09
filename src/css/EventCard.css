@@ -253,8 +253,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding-top: 20px;
   border-top: 1px solid #f0f0f5;
+  flex-wrap: wrap;
 }
 
 .modal-price-section {
@@ -293,6 +295,43 @@
 
 .buy-button:active {
   transform: scale(0.97);
+}
+
+.delete-button {
+  background: #ff3b30;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.25);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.delete-button:hover:not(:disabled) {
+  background: #ff2d22;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 59, 48, 0.35);
+}
+
+.delete-button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.delete-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.modal-footer > div:last-child {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 /* Animacje */
@@ -351,9 +390,19 @@
     align-items: stretch;
   }
 
+  .modal-footer > div:last-child {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .buy-button {
     text-align: center;
     width: 100%;
+  }
+
+  .delete-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .modal-price-section {

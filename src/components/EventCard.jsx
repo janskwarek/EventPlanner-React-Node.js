@@ -102,17 +102,7 @@ function EventCard({ event, isInitiallyFavorite, onToggle, onDelete }) {
           </div>
         </div>
       </div>
-  {isOwner && (
-                    <button
-                      className="delete-button"
-                      onClick={handleDeleteEvent}
-                      disabled={isDeleting}
-                      style={{ marginLeft: "10px", backgroundColor: "#dc3545" }}
-                    >
-                      {isDeleting ? "Usuwanie..." : "🗑️ Usuń"}
-                    </button>
-                  )}
-                
+
       {isModalOpen && (
         <div className="modal-overlay" onClick={toggleModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -146,9 +136,20 @@ function EventCard({ event, isInitiallyFavorite, onToggle, onDelete }) {
                     <span className="modal-price-label">Cena biletu</span>
                     <span className="modal-price">{event.price} zł</span>
                   </div>
-                  <Link to={`/Tickets/${event.id}`} className="buy-button">
-                    Kup bilet
-                  </Link>
+                  <div style={{ display: "flex", gap: "12px" }}>
+                    <Link to={`/Tickets/${event.id}`} className="buy-button">
+                      Kup bilet
+                    </Link>
+                    {isOwner && (
+                      <button
+                        className="delete-button"
+                        onClick={handleDeleteEvent}
+                        disabled={isDeleting}
+                      >
+                        🗑️ {isDeleting ? "Usuwanie..." : "Usuń"}
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
