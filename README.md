@@ -1,5 +1,7 @@
 # Event Planner
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z systemem autentykacji, ulubionymi, biletami i profilem użytkownika.
 
 ## Screenshots
@@ -88,19 +90,18 @@ Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z 
 
 ### Kroki Instalacji
 
-#### 1. Pobierz pliki aplikacji
+#### 1. Sklonuj repozytorium
 
-otworz pliki strony ->
-cd eventplannernowy
-
-````
+```bash
+git clone https://github.com/janskwarek/EventPlanner-React-Node.js.git
+cd EventPlanner-React-Node.js/eventplannernowy
+```
 
 #### 2. Instalacja Frontend
 
 ```bash
-cd eventplannernowy
 npm install
-````
+```
 
 #### 3. Instalacja Backend
 
