@@ -68,7 +68,9 @@ export const register = async (req, res) => {
             .status(400)
             .json({ message: "Użytkownik o tej nazwie już istnieje" });
         }
-        return res.status(500).json({ message: `Błąd serwera: ${err.message}` });
+        return res
+          .status(500)
+          .json({ message: `Błąd serwera: ${err.message}` });
       }
       res.json({ message: "Użytkownik zarejestrowany pomyślnie" });
     });

@@ -10,6 +10,52 @@ export const con = mysql.createConnection({
 con.connect((err) => {
   if (err) throw err;
 
+  // Ensure all required columns exist in events table
+  const addTitleSQL = `
+    ALTER TABLE events ADD COLUMN IF NOT EXISTS title VARCHAR(255) NOT NULL
+  `;
+  con.query(addTitleSQL, (err) => {
+    if (err && err.code !== "ER_DUP_FIELDNAME") {
+      console.error("Database setup error (title):", err);
+    }
+  });
+
+  const addDateSQL = `
+    ALTER TABLE events ADD COLUMN IF NOT EXISTS date VARCHAR(255)
+  `;
+  con.query(addDateSQL, (err) => {
+    if (err && err.code !== "ER_DUP_FIELDNAME") {
+      console.error("Database setup error (date):", err);
+    }
+  });
+
+  const addUrlSQL = `
+    ALTER TABLE events MODIFY COLUMN url LONGTEXT
+  `;
+  con.query(addUrlSQL, (err) => {
+    if (err && err.code !== "ER_DUP_FIELDNAME") {
+      console.error("Database setup error (url):", err);
+    }
+  });
+
+  const addPriceSQL = `
+    ALTER TABLE events ADD COLUMN IF NOT EXISTS price DECIMAL(10, 2) DEFAULT 0
+  `;
+  con.query(addPriceSQL, (err) => {
+    if (err && err.code !== "ER_DUP_FIELDNAME") {
+      console.error("Database setup error (price):", err);
+    }
+  });
+
+  const addDescriptionSQL = `
+    ALTER TABLE events ADD COLUMN IF NOT EXISTS description TEXT
+  `;
+  con.query(addDescriptionSQL, (err) => {
+    if (err && err.code !== "ER_DUP_FIELDNAME") {
+      console.error("Database setup error (description):", err);
+    }
+  });
+
   const addColumnSQL = `
     ALTER TABLE events ADD COLUMN IF NOT EXISTS created_by VARCHAR(255) DEFAULT 'Anonymous'
   `;

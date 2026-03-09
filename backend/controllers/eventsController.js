@@ -10,7 +10,9 @@ export const getAllEvents = (req, res) => {
 
 export const createEvent = (req, res) => {
   const { title, date, url, price, description } = req.body;
-  const created_by = req.user.username;
+  const created_by = req.user?.username;
+
+  console.log("📝 Creating event with data:", { title, date, url, price, description, created_by });
 
   // Walidacja
   if (!title || title.trim() === "") {
@@ -18,6 +20,9 @@ export const createEvent = (req, res) => {
   }
   if (!date || date.trim() === "") {
     return res.status(400).json({ error: "Data jest wymagana" });
+  }
+  if (!created_by) {
+    return res.status(401).json({ error: "Nie jesteś zalogowany" });
   }
   if (price && isNaN(price)) {
     return res.status(400).json({ error: "Cena musi być liczbą" });
@@ -31,9 +36,16 @@ export const createEvent = (req, res) => {
     [title.trim(), date, url || "", price || 0, description || "", created_by],
     (err, result) => {
       if (err) {
-        console.error("Database error adding event:", err.message);
-        return res.status(500).json({ error: "Błąd serwera podczas dodawania" });
+        console.error("❌ Database error adding event:");
+        console.error("   Code:", err.code);
+        console.error("   Message:", err.message);
+        console.error("   SQL:", err.sql);
+        return res
+          .status(500)
+          .json({ error: "Błąd serwera podczas dodawania", details: err.message });
       }
+
+      console.log("✅ Event created successfully with ID:", result.insertId);
 
       const newEvent = {
         id: result.insertId,
@@ -46,7 +58,7 @@ export const createEvent = (req, res) => {
       };
 
       res.status(201).json(newEvent);
-    }
+    },
   );
 };
 

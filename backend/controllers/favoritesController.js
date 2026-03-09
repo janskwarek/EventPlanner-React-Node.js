@@ -43,9 +43,9 @@ export const addFavorite = (req, res) => {
         (err, result) => {
           if (err) return res.status(500).json({ error: err.message });
           res.json({ message: "Dodano do ulubionych", isFavorite: true });
-        }
+        },
       );
-    }
+    },
   );
 };
 
