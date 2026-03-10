@@ -6,18 +6,35 @@ Aplikacja do odkrywania, planowania i zarządzania eventami. Aplikacja webowa z 
 
 ## Screenshots
 
--Home Page
+### Strona Główna (Homepage)
+
 ![Homepage](./screenshots/Homepage.png)
--Register/Login
+Główna strona z listą dostępnych eventów. Użytkownicy mogą przeglądać eventy, dodawać je do ulubionych i wyświetlać szczegóły w modalnym oknie.
+
+### Rejestracja i Logowanie (Register/Login)
+
 ![Register/Login](./screenshots/Register_Login.png)
--Form Add Events
+Strona autentykacji z formularzami do rejestracji i logowania użytkowników. System wykorzystuje JWT do bezpiecznego zarządzania sesją.
+
+### Formularz Dodawania Eventów (Add Events Form)
+
 ![Add Events](./screenshots/AddEventsForm.png)
--Favorites Page
+Formularz do dodania nowego eventu z polami: tytuł, opis, data, cena i zdjęcie. Dostępny tylko dla zalogowanych użytkowników.
+
+### Strona Ulubionych (Favorites)
+
 ![Favorites](./screenshots/Favorites.png)
--Tickets Page
+Strona wyświetlająca wszystkie eventy dodane do ulubionych. Użytkownicy mogą zarządzać swoją listą ulubionych eventów.
+
+### Strona Biletów (Tickets)
+
 ![Tickets](./screenshots/Tickets.png)
--User Profile Page
+Strona z historią zakupionych biletów. Każdy bilet zawiera kod QR i możliwość pobrania w formacie PDF.
+
+### Profil Użytkownika (User Profile)
+
 ![User Profile](./screenshots/UserProfile.png)
+Strona profilu z informacjami osobowymi, historią rezerwacji i opcją wylogowania.
 
 ---
 

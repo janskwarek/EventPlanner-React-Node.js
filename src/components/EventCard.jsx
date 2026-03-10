@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import "../css/EventCard.css";
 import { Link } from "react-router-dom";
@@ -38,7 +39,6 @@ function EventCard({ event, isInitiallyFavorite, onToggle, onDelete }) {
         throw new Error(data.error || "Błąd przy usuwaniu");
       }
 
-      alert("Event usunięty!");
       setIsModalOpen(false);
       if (onDelete) onDelete(event.id);
     } catch (err) {
@@ -52,7 +52,6 @@ function EventCard({ event, isInitiallyFavorite, onToggle, onDelete }) {
   const handleFavoriteClick = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const username = localStorage.getItem("username");
 
     const token = localStorage.getItem("token");
     if (!token) {
@@ -66,7 +65,7 @@ function EventCard({ event, isInitiallyFavorite, onToggle, onDelete }) {
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
       const data = await res.json();
       setIsFavorite(!isFavorite);

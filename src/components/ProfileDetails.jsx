@@ -54,8 +54,8 @@ function ProfileDetails() {
         ) : userEvents.length > 0 ? (
           <div className="user-events-grid">
             {userEvents.map((event) => (
-              <EventCard 
-                key={event.id} 
+              <EventCard
+                key={event.id}
                 event={event}
                 onDelete={handleDeleteEvent}
               />

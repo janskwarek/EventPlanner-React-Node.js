@@ -12,7 +12,14 @@ export const createEvent = (req, res) => {
   const { title, date, url, price, description } = req.body;
   const created_by = req.user?.username;
 
-  console.log("📝 Creating event with data:", { title, date, url, price, description, created_by });
+  console.log("📝 Creating event with data:", {
+    title,
+    date,
+    url,
+    price,
+    description,
+    created_by,
+  });
 
   // Walidacja
   if (!title || title.trim() === "") {
@@ -42,7 +49,10 @@ export const createEvent = (req, res) => {
         console.error("   SQL:", err.sql);
         return res
           .status(500)
-          .json({ error: "Błąd serwera podczas dodawania", details: err.message });
+          .json({
+            error: "Błąd serwera podczas dodawania",
+            details: err.message,
+          });
       }
 
       console.log("✅ Event created successfully with ID:", result.insertId);
